@@ -12,12 +12,15 @@
 #define MAX_BUFFER  128
 #define INPUT       stdin
 
+int exit_status = 0;
+
 size_t do_prepare_cmd(char cmd[]){
     fgets(cmd, MAX_BUFFER, INPUT);
     size_t length = strlen(cmd) - 1;
     /* Remove \n */
     cmd[strcspn(cmd, "\n")] = 0;
-    BSHELL_LOG_DEBUG("Got command: %s, with length: %ld", cmd, length);
+    if(length)
+        BSHELL_LOG_DEBUG("Got command: %s, with length: %ld", cmd, length);
     return length;
 }
 
@@ -38,7 +41,7 @@ int main(int argc, char **argv){
      */
     while(1){
         char cmd[MAX_BUFFER];
-        printf(PROMPT);
+        printf("%d | %s", exit_status, PROMPT);
         size_t len = do_prepare_cmd(cmd);
 
         if(!len)
@@ -53,7 +56,9 @@ int main(int argc, char **argv){
             char ** cmdout = (char **)malloc(sizeof(char *) * 50);
             do_split_cmd(cmd, cmdout);
             do_print_cmdlist(cmdout);
-            do_exec_cmd(cmdout);
+            printf("\n");
+            exit_status = do_exec_cmd(cmdout);
+            printf("\n");
         }
 
     }
