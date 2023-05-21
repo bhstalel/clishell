@@ -28,7 +28,7 @@ $(EXEC): $(OBJS)
 
 %.o: $(SOURCE)/%.c
 	$(call print, "Generating $@ ..")
-	$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c $<
 
 clean:
 	rm -rf $(EXEC) *.o

@@ -13,7 +13,6 @@
 #define INPUT       stdin
 
 size_t do_prepare_cmd(char cmd[]){
-    printf(PROMPT);
     fgets(cmd, MAX_BUFFER, INPUT);
     size_t length = strlen(cmd) - 1;
     /* Remove \n */
@@ -24,22 +23,22 @@ size_t do_prepare_cmd(char cmd[]){
 
 int main(int argc, char **argv){
 
-    /* Check if some prompt is provided */
-
     /**
      * Check if a prompt is provided
-     * Start a while loop
-     * Get input from the user
-     * Split the input
-     * Construct the args list
-     * Fork and exec the command
-     * Wait for the command to finish
+     * OK Start a while loop
+     * OK Get input from the user
+     * OK Split the input
+     * OK Construct the args list
+     * OK Fork and exec the command
+     * OK Wait for the command to finish:
+     * = Test if wait if OK (if child completed OK) : Add return code to PROMPT ?
      * = Add background execution !
      * = Add pipeline mechanism
-     * 
+     * = Add History with circular buffer mechanism
      */
     while(1){
         char cmd[MAX_BUFFER];
+        printf(PROMPT);
         size_t len = do_prepare_cmd(cmd);
 
         if(!len)
