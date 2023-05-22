@@ -51,5 +51,5 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-bshell
+clishell
 .vscode
