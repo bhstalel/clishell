@@ -8,7 +8,7 @@ INCLUDES	:= $(wildcard $(INCLUDE)/*.h)
 SOURCE		:= ./src
 SOURCES		:= $(wildcard $(SOURCE)/*.c)
 OBJS		:= $(patsubst $(SOURCE)/%.c,%.o,$(SOURCES))
-EXEC		:= bshell
+EXEC		:= clishell
 CFLAGS		:= -I$(INCLUDE)
 LDFLAGS		:=
 

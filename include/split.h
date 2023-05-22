@@ -6,8 +6,9 @@
  * 
  * @param cmd       The string command to split
  * @param cmdout    The double pointer output result holder
+ * @return          The size of the split command
  */
-void do_split_cmd(char cmd[], char ** cmdout);
+int do_split_cmd(char cmd[], char ** cmdout);
 
 /**
  * @brief Print the final parsed command

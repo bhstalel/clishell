@@ -1,7 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#define PROMPT      "bshell> "
+#define PROMPT      "clishell> "
 #define MAX_BUFFER  128
 #define INPUT       stdin
 

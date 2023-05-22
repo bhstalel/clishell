@@ -28,7 +28,7 @@ int main(int argc, char **argv){
      * = Test if wait if OK (if child completed OK) : Add return code to PROMPT ?
      * = Add background execution !
      * = Add pipeline mechanism
-     * = Add History with circular buffer mechanism
+     * OK Add History
      */
     while(1){
         char cmd[MAX_BUFFER];
@@ -58,12 +58,11 @@ int main(int argc, char **argv){
 
             /* Split the input command by space */
             char ** cmdout = (char **)malloc(sizeof(char *) * 50);
-            do_split_cmd(cmd, cmdout);
+            int size = do_split_cmd(cmd, cmdout);
             do_print_cmdlist(cmdout);
 
             /* Execute command */
-            printf("\n");
-            exit_status = do_exec_cmd(cmdout);
+            exit_status = do_exec_cmd(cmdout, size);
             printf("\n");
         }
 
